@@ -1,0 +1,41 @@
+global
+  maxconn 1024 
+  daemon
+  pidfile <%= pid_file %>
+
+defaults
+  mode http
+  maxconn 1024
+  option  httplog clf
+  option  dontlognull
+  retries 3
+  timeout connect 5s
+  timeout client 60s
+  timeout server 60s
+
+listen stats 
+  bind *:4444
+  mode            http
+  maxconn 10
+  timeout client      100s
+  timeout server      100s
+  timeout connect      100s
+  timeout queue   100s
+  stats enable
+  stats hide-version
+  stats refresh 30s
+  stats show-node
+  stats uri /haproxy?stats
+
+frontend rotating_proxies
+  mode http
+  bind *:<%= port %>
+  default_backend tor
+
+backend tor
+  mode http
+  balance leastconn
+
+  <% backends.each do |b| %>
+  server <%= b[:name] %><%= b[:port] %> <%= b[:addr] %>:<%= b[:port] %> check
+  <% end %>
