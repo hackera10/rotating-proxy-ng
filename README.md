@@ -1,6 +1,6 @@
 # rotating-proxy-ng
 
-This is the fork of the original repo https://github.com/mattes/rotating-proxy. The original repo has old dependencies and unable to built the docker container due to that. This repo fixes some of the immediate issues while building containers, moved to alpine, and added a `torrc` file. The dependency [polipo](https://github.com/jech/polipo) is archived and due to this, the dependency is built withiin the docker file.
+This is the fork of the original repo https://github.com/mattes/rotating-proxy. The original repo has old dependencies and unable to built the docker container due to that. This repo fixes some of the immediate issues while building containers, moved to alpine, and added a `torrc` file. The dependency [polipo](https://github.com/jech/polipo) is archived and due to this, the dependency is built within the docker file.
 
 The tor settings can be configure using `torrc` file as well. The ng stands for next generation compared to the original repo.
 
