@@ -1,2 +1,2 @@
-ExitNodes {DE}
-StrictNodes 1
+#ExitNodes {DE}
+#StrictNodes 1
